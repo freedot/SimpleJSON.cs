@@ -5,7 +5,6 @@ JSONObject person = new JSONObject();
 person["name"] = new JSONObject("jack");
 person["desc"] = new JSONObject("hello world \" ... \"!");
 person["age"] = new JSONObject(18);
-person["married"] = new JSONObject(false);
 
 JSONArray travelFootprint = new JSONArray();
 travelFootprint[0] = new JSONObject("China");

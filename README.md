@@ -22,7 +22,7 @@ output# {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint
 ### 2、解析json格式字符串
 
 ```c#
-string s = {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint":["China","India"]}；
+string s = {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint":["China","India"]};
 JSONObject person = JSONObject.Parse(s);
 
 //获取person.name

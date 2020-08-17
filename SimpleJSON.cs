@@ -434,6 +434,9 @@ namespace SimpleJSON.PARSER
             Stack<ParserState> states = new Stack<ParserState>();
             ParserState state = ParserState.None;
 
+            Stack<int> indexs = new Stack<int>();
+            Stack<string> keys = new Stack<string>();
+
             JSONObject curValue = null;
 
             int index = 0;
@@ -450,6 +453,7 @@ namespace SimpleJSON.PARSER
                     case TokenType.TokLBracket:
                         objects.Push(lastValue);
                         states.Push(state);
+                        indexs.Push(index);
 
                         index = 0;
                         lastValue = new JSONArray();
@@ -459,13 +463,21 @@ namespace SimpleJSON.PARSER
                     case TokenType.TokLBrace:
                         objects.Push(lastValue);
                         states.Push(state);
+                        keys.Push(key);
 
                         lastValue = new JSONObject();
                         state = ParserState.StartObject;
                         break;
 
                     case TokenType.TokRBracket:
+                        index = indexs.Pop();
+                        curValue = lastValue;
+                        lastValue = objects.Pop();
+                        state = states.Pop();
+                        break;
+                        
                     case TokenType.TokRBrace:
+                        key = keys.Pop();
                         curValue = lastValue;
                         lastValue = objects.Pop();
                         state = states.Pop();

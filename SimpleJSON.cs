@@ -191,6 +191,26 @@ namespace SimpleJSON
             }
         }
 
+        public string[] ToStringArray()
+        {
+            List<string> list = new List<string>();
+            for(int i=0; i<values.Count; i++)
+            {
+                list.Add(values[i].ToString());
+            }
+            return list.ToArray();
+        }
+
+        public int[] ToIntegerArray()
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < values.Count; i++)
+            {
+                list.Add(values[i].ToInteger());
+            }
+            return list.ToArray();
+        }
+
         protected override string InnerToString(bool json)
         {
             StringBuilder str = new StringBuilder();
@@ -431,6 +451,7 @@ namespace SimpleJSON.PARSER
                         objects.Push(lastValue);
                         states.Push(state);
 
+                        index = 0;
                         lastValue = new JSONArray();
                         state = ParserState.StartArray;
                         break;

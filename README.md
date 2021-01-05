@@ -12,7 +12,8 @@ travelFootprint[1] = new JSONObject("India");
 
 person["travelFootprint"] = travelFootprint;
 
-Debug.Log(person.ToJSONString());
+string jsonStr = person.ToJSONString();
+Debug.Log(jsonStr);
 
 // 转成JSONString输出
 output# {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint":["China","India"]}
@@ -21,8 +22,7 @@ output# {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint
 ### 2、解析json格式字符串
 
 ```c#
-string s = {"name":"jack","desc":"hello world \" ... \"!","age":18,"travelFootprint":["China","India"]};
-JSONObject person = JSONObject.Parse(s);
+JSONObject person = JSONObject.Parse(jsonStr);
 
 //获取person.name
 person["name"].ToString(); // 方法一

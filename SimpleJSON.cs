@@ -98,8 +98,8 @@ namespace SimpleJSON
             return this[key] as JSONArray;
         }
 
-        public float ToFloat() { return (float)value; }
-        public int ToInteger() { return (int)value; }
+        public float ToFloat() { return System.Convert.ToSingle(value); }
+        public int ToInteger() { return System.Convert.ToInt32(value); }
         public bool ToBealoon() { return (bool)value; }
         public override string ToString()
         {
